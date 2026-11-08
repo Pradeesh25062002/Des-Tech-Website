@@ -14,7 +14,7 @@
       <a href="/student-stories" (click)="closeMenu()">Student Stories</a>
       <a href="/contact" (click)="closeMenu()">Contact</a>
     </nav>
-    <a class="button button-dark header-apply" href="#contact">Apply Now <span aria-hidden="true">→</span></a>
+    <a class="button button-dark header-apply" href="/enquiry?source=Homepage">Apply Now <span aria-hidden="true">→</span></a>
   </div>
 </header>
 
@@ -41,7 +41,7 @@
         <p class="hero-description">Hands-on training in HVAC, MEP and IT Networking with real-world projects and industry-relevant skills to help you move forward with confidence.</p>
         <div class="hero-actions">
           <a class="button button-light" [href]="'/courses#' + heroSlides[activeSlide()].courseId">Explore Courses <span aria-hidden="true">→</span></a>
-          <a class="button button-outline" href="/contact">Enquire Now</a>
+          <a class="button button-outline" [href]="courseEnquiryHref(heroSlides[activeSlide()].courseId, 'Homepage')">Enquire Now</a>
         </div>
       </div>
     </div>
@@ -98,7 +98,7 @@
   </section>
 
   <section class="career-cta" id="placements" aria-labelledby="cta-title">
-    <div class="cta-inner"><div><p class="eyebrow eyebrow-light">Your next step</p><h2 id="cta-title">Turn your skills into real opportunities.</h2></div><a class="button button-light" href="/contact">Enquire Now <span aria-hidden="true">→</span></a></div>
+    <div class="cta-inner"><div><p class="eyebrow eyebrow-light">Your next step</p><h2 id="cta-title">Turn your skills into real opportunities.</h2></div><a class="button button-light" href="/enquiry?source=Homepage">Enquire Now <span aria-hidden="true">→</span></a></div>
   </section>
 </main>
 

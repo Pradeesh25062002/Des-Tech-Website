@@ -89,4 +89,16 @@ export class CoursesPage implements AfterViewInit {
   protected closeMenu(): void {
     this.menuOpen.set(false);
   }
+
+  protected courseEnquiryHref(course: Course): string {
+    const courseNames: Record<Course['id'], string> = {
+      hvac: 'HVAC',
+      mep: 'MEP',
+      'aws-networking': 'AWS',
+      'warehouse-management': 'Warehouse Management',
+      'hse-management': 'HSE',
+    };
+    const name = courseNames[course.id];
+    return `/enquiry?course=${encodeURIComponent(name)}&source=${encodeURIComponent(`${name} Course`)}`;
+  }
 }

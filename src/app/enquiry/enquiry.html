@@ -1,0 +1,86 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" routerLink="/" aria-label="DES-TECH ACADEMY home"><img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" /></a>
+    <button class="menu-toggle" type="button" [attr.aria-expanded]="menuOpen()" aria-controls="enquiry-nav" aria-label="Toggle navigation" (click)="menuOpen.update(value => !value)"><span></span><span></span><span></span></button>
+    <nav id="enquiry-nav" class="primary-nav" [class.is-open]="menuOpen()" aria-label="Main navigation">
+      <a routerLink="/" (click)="closeMenu()">Home</a><a routerLink="/about" (click)="closeMenu()">About</a><a routerLink="/courses" (click)="closeMenu()">Courses</a><a routerLink="/placements" (click)="closeMenu()">Placements</a><a routerLink="/student-stories" (click)="closeMenu()">Student Stories</a><a routerLink="/contact" (click)="closeMenu()">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="enquiry-hero" aria-labelledby="enquiry-title">
+    <img src="hvac-hero.png" alt="Technician working on industrial HVAC equipment" />
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-copy"><p class="eyebrow eyebrow-light">Course enquiries</p><h1 id="enquiry-title">Start your next<br />chapter with us<span class="accent">.</span></h1><p>Tell us a little about yourself and our admissions team will help you choose the right course.</p></div>
+  </section>
+
+  <section class="enquiry-section" aria-label="Course enquiry form">
+    <div class="enquiry-layout">
+      <div class="enquiry-aside"><p class="eyebrow">Take the next step</p><h2>Practical training.<br />Personal guidance.</h2><p>Share your details and we’ll get in touch about your course enquiry.</p></div>
+
+      @if (submitted()) {
+        <section class="success-card" aria-live="polite" aria-labelledby="success-title">
+          <div class="success-mark" aria-hidden="true">✓</div>
+          <p class="eyebrow">Enquiry received</p>
+          <h2 id="success-title">Enquiry submitted successfully!</h2>
+          <p>Thank you for your interest. Our DES-TECH ACADEMY representative will contact you shortly.</p>
+          @if (notificationWarning()) { <p class="notification-note">Your enquiry is saved. We could not send an internal notification, but the admissions team can still follow up.</p> }
+          <a class="button button-dark" routerLink="/">Return to homepage <span aria-hidden="true">→</span></a>
+        </section>
+      } @else {
+        <form class="enquiry-form" [formGroup]="form" (ngSubmit)="submitEnquiry()" novalidate>
+          <p class="form-heading">Course enquiry</p>
+          <div class="form-grid">
+            <div class="field">
+              <label for="first-name">First Name <span aria-hidden="true">*</span></label>
+              <input id="first-name" type="text" formControlName="firstName" autocomplete="given-name" maxlength="80" [attr.aria-invalid]="hasError('firstName')" [attr.aria-describedby]="hasError('firstName') ? 'first-name-error' : null" />
+              @if (hasError('firstName')) { <p class="field-error" id="first-name-error">{{ fieldError('firstName', 'Enter your first name (up to 80 characters).') }}</p> }
+            </div>
+            <div class="field">
+              <label for="last-name">Last Name <span aria-hidden="true">*</span></label>
+              <input id="last-name" type="text" formControlName="lastName" autocomplete="family-name" maxlength="80" [attr.aria-invalid]="hasError('lastName')" [attr.aria-describedby]="hasError('lastName') ? 'last-name-error' : null" />
+              @if (hasError('lastName')) { <p class="field-error" id="last-name-error">{{ fieldError('lastName', 'Enter your last name (up to 80 characters).') }}</p> }
+            </div>
+            <div class="field">
+              <label for="qualification">Qualification <span aria-hidden="true">*</span></label>
+              <select id="qualification" formControlName="qualification" [attr.aria-invalid]="hasError('qualification')" [attr.aria-describedby]="hasError('qualification') ? 'qualification-error' : null">
+                <option value="">Select your qualification</option>
+                @for (qualification of qualifications; track qualification) { <option [value]="qualification">{{ qualification }}</option> }
+              </select>
+              @if (hasError('qualification')) { <p class="field-error" id="qualification-error">{{ fieldError('qualification', 'Select your highest qualification.') }}</p> }
+            </div>
+            <div class="field">
+              <label for="course">Course <span aria-hidden="true">*</span></label>
+              <select id="course" formControlName="course" [attr.aria-invalid]="hasError('course')" [attr.aria-describedby]="hasError('course') ? 'course-error' : null">
+                <option value="">Select a course</option>
+                @for (course of courses; track course) { <option [value]="course">{{ course }}</option> }
+              </select>
+              @if (hasError('course')) { <p class="field-error" id="course-error">{{ fieldError('course', 'Select the course you’re interested in.') }}</p> }
+            </div>
+            <div class="field field-wide">
+              <label for="contact-number">Contact Number <span aria-hidden="true">*</span></label>
+              <input id="contact-number" type="tel" formControlName="contactNumber" autocomplete="tel" inputmode="tel" maxlength="14" placeholder="10-digit mobile number" [attr.aria-invalid]="hasError('contactNumber')" [attr.aria-describedby]="hasError('contactNumber') ? 'contact-number-error' : 'contact-number-help'" />
+              @if (hasError('contactNumber')) { <p class="field-error" id="contact-number-error">{{ fieldError('contactNumber', 'Enter a valid 10-digit Indian mobile number, optionally with +91.') }}</p> }
+              @else { <p class="field-help" id="contact-number-help">You may include the +91 country prefix.</p> }
+            </div>
+          </div>
+
+          <div class="honeypot" aria-hidden="true"><label for="website">Leave this field empty</label><input id="website" type="text" formControlName="website" tabindex="-1" autocomplete="off" /></div>
+          @if (submissionError()) { <p class="submission-error" role="alert">{{ submissionError() }}</p> }
+          <button class="button button-dark submit-button" [class.submit-button-ready]="form.valid" type="submit" [disabled]="submitting()">
+            @if (submitting()) { <span class="spinner" aria-hidden="true"></span> Sending… }
+            @else { Submit Enquiry <span aria-hidden="true">→</span> }
+          </button>
+          <p class="privacy-notice">By submitting this form, you agree to be contacted by DES-TECH ACADEMY regarding your course enquiry. Your information will be used for admissions-related communication.</p>
+        </form>
+      }
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="footer-inner">
+  <a class="footer-brand" routerLink="/" aria-label="DES-TECH ACADEMY home"><img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" /></a>
+  <p class="footer-address">Attaikulath Apartments, Cheruparambath Road, Kadavanthra, Ernakulam, Kerala.</p>
+  <div class="footer-phones"><a href="tel:+918590093998">8590093998</a><a href="tel:+918921219805">8921219805</a></div>
+</div></footer>

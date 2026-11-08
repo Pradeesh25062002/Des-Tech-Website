@@ -5,7 +5,7 @@
     <nav id="stories-nav" class="primary-nav" [class.is-open]="menuOpen()" aria-label="Main navigation">
       <a href="/" (click)="closeMenu()">Home</a><a href="/about" (click)="closeMenu()">About</a><a href="/courses" (click)="closeMenu()">Courses</a><a href="/placements" (click)="closeMenu()">Placements</a><a class="active" href="/student-stories" aria-current="page" (click)="closeMenu()">Student Stories</a><a href="/contact" (click)="closeMenu()">Contact</a>
     </nav>
-    <a class="button button-dark header-apply" href="/contact">Apply Now <span aria-hidden="true">→</span></a>
+    <a class="button button-dark header-apply" href="/enquiry?source=Student%20Stories%20Page">Apply Now <span aria-hidden="true">→</span></a>
   </div>
 </header>
 
@@ -31,19 +31,21 @@
         @for (student of visibleStudents; track student.name) {
           <article class="student-card">
             <img class="student-photo" [src]="student.image" [alt]="'Portrait of ' + student.name" />
-            <div class="student-info"><h3>{{ student.name }}</h3><p class="designation">{{ student.designation }}</p><div class="company"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V4h11v17M15 10h5v11M2 21h20M8 8h3M8 12h3M8 16h3M17 14h1M17 17h1"/></svg><span>{{ student.company }}</span></div></div>
+            <div class="student-info"><h3>{{ student.name }}</h3><p class="designation">{{ student.designation }}</p>
+              @if (student.testimonial) { <blockquote class="testimonial"><span class="quote-mark" aria-hidden="true">“</span><p>{{ student.testimonial }}</p></blockquote> }
+              <div class="company"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V4h11v17M15 10h5v11M2 21h20M8 8h3M8 12h3M8 16h3M17 14h1M17 17h1"/></svg><span>{{ student.company }}</span></div></div>
           </article>
         }
       </div>
       <nav class="pagination" aria-label="Student stories pages">
         <button class="page-arrow" type="button" aria-label="Previous page" [disabled]="currentPage() === 1" (click)="goToPage(currentPage() - 1)">← <span>Previous</span></button>
-        @for (page of [1, 2, 3]; track page) { <button class="page-number" type="button" [class.selected]="currentPage() === page" [attr.aria-current]="currentPage() === page ? 'page' : null" [attr.aria-label]="'Page ' + page" (click)="goToPage(page)">{{ page }}</button> }
-        <button class="page-arrow" type="button" aria-label="Next page" [disabled]="currentPage() === 3" (click)="goToPage(currentPage() + 1)"><span>Next</span> →</button>
+        @for (page of pages; track page) { <button class="page-number" type="button" [class.selected]="currentPage() === page" [attr.aria-current]="currentPage() === page ? 'page' : null" [attr.aria-label]="'Page ' + page" (click)="goToPage(page)">{{ page }}</button> }
+        <button class="page-arrow" type="button" aria-label="Next page" [disabled]="currentPage() === pages.length" (click)="goToPage(currentPage() + 1)"><span>Next</span> →</button>
       </nav>
     </div>
   </section>
 
-  <section class="stories-cta"><div class="cta-inner"><div><p class="eyebrow eyebrow-light">Be the next success story</p><h2>Join DES-TECH ACADEMY and build your own success story<span class="accent">.</span></h2></div><a class="button button-light" href="/contact">Apply Now <span aria-hidden="true">→</span></a></div></section>
+  <section class="stories-cta"><div class="cta-inner"><div><p class="eyebrow eyebrow-light">Be the next success story</p><h2>Join DES-TECH ACADEMY and build your own success story<span class="accent">.</span></h2></div><a class="button button-light" href="/enquiry?source=Student%20Stories%20Page">Apply Now <span aria-hidden="true">→</span></a></div></section>
 </main>
 
 <footer class="site-footer"><div class="footer-inner">

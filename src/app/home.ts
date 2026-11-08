@@ -128,4 +128,16 @@ export class HomePage implements OnInit, OnDestroy {
   protected closeMenu(): void {
     this.menuOpen.set(false);
   }
+
+  protected courseEnquiryHref(courseId: string, source: string): string {
+    const courses: Record<string, string> = {
+      hvac: 'HVAC',
+      mep: 'MEP',
+      'aws-networking': 'AWS',
+      'warehouse-management': 'Warehouse Management',
+      'hse-management': 'HSE',
+    };
+    const course = courses[courseId];
+    return `/enquiry?course=${encodeURIComponent(course ?? '')}&source=${encodeURIComponent(course ? `${course} Course` : source)}`;
+  }
 }

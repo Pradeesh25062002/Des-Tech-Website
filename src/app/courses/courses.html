@@ -7,7 +7,7 @@
       <a class="active" href="/courses" aria-current="page" (click)="closeMenu()">Courses</a>
       <a href="/placements">Placements</a><a href="/student-stories">Student Stories</a><a href="/contact">Contact</a>
     </nav>
-    <a class="button button-dark header-apply" href="#contact">Apply Now <span aria-hidden="true">→</span></a>
+    <a class="button button-dark header-apply" href="/enquiry?source=Courses%20Page">Apply Now <span aria-hidden="true">→</span></a>
   </div>
 </header>
 
@@ -59,12 +59,12 @@
           <div class="info-group benefits-group"><p class="details-label">Benefits</p><ul class="feature-list">@for (feature of course.features; track feature) { <li>{{ feature }}</li> }</ul></div>
         </div>
         <a class="learn-link" href="/contact">Learn More <span aria-hidden="true">→</span></a>
-        <a class="button button-dark enquire" href="/contact">Enquire Now <span aria-hidden="true">→</span></a>
+        <a class="button button-dark enquire" [href]="courseEnquiryHref(course)">Enquire Now <span aria-hidden="true">→</span></a>
       </div>
     </article>
   </ng-template>
 
-  <section class="career-cta"><div class="cta-inner"><div><p class="eyebrow eyebrow-light">Your future starts here</p><h2>Choose the right course. Build your tomorrow.</h2><p>Get expert guidance, practical training and placement support to take the next step in your career.</p></div><a class="button button-light" href="#contact">Apply Now <span aria-hidden="true">→</span></a></div></section>
+  <section class="career-cta"><div class="cta-inner"><div><p class="eyebrow eyebrow-light">Your future starts here</p><h2>Choose the right course. Build your tomorrow.</h2><p>Get expert guidance, practical training and placement support to take the next step in your career.</p></div><a class="button button-light" href="/enquiry?source=Courses%20Page">Apply Now <span aria-hidden="true">→</span></a></div></section>
 </main>
 
 <footer class="site-footer" id="contact"><div class="footer-inner"><a class="footer-brand" href="/" aria-label="DES-TECH ACADEMY home"><img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" /></a><p>{{ address }}</p><a href="tel:+916238882299">+91 6238 882299</a></div></footer>

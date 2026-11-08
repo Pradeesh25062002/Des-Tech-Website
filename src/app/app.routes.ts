@@ -5,6 +5,7 @@ import { CoursesPage } from './courses/courses';
 import { ContactPage } from './contact/contact';
 import { PlacementsPage } from './placements/placements';
 import { StudentStoriesPage } from './student-stories/student-stories';
+import { EnquiryPage } from './enquiry/enquiry';
 
 export const routes: Routes = [
   { path: '', component: HomePage, title: 'DES-TECH ACADEMY | Career-Focused Training' },
@@ -13,5 +14,6 @@ export const routes: Routes = [
   { path: 'contact', component: ContactPage, title: 'Contact | DES-TECH ACADEMY' },
   { path: 'placements', component: PlacementsPage, title: 'Placements | DES-TECH ACADEMY' },
   { path: 'student-stories', component: StudentStoriesPage, title: 'Student Stories | DES-TECH ACADEMY' },
+  { path: 'enquiry', component: EnquiryPage, title: 'Course Enquiry | DES-TECH ACADEMY' },
   { path: '**', redirectTo: '' },
 ];
