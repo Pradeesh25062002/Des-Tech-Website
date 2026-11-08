@@ -1,0 +1,60 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="DES-TECH ACADEMY home" (click)="closeMenu()"><img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" /></a>
+    <button class="menu-toggle" type="button" [attr.aria-expanded]="menuOpen()" aria-controls="placements-nav" aria-label="Toggle navigation" (click)="menuOpen.update(value => !value)"><span></span><span></span><span></span></button>
+    <nav id="placements-nav" class="primary-nav" [class.is-open]="menuOpen()" aria-label="Main navigation">
+      <a href="/" (click)="closeMenu()">Home</a><a href="/about" (click)="closeMenu()">About</a><a href="/courses" (click)="closeMenu()">Courses</a><a class="active" href="/placements" aria-current="page" (click)="closeMenu()">Placements</a><a href="/student-stories" (click)="closeMenu()">Student Stories</a><a href="/contact" (click)="closeMenu()">Contact</a>
+    </nav>
+    <a class="button button-dark header-apply" href="/contact">Apply Now <span aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="placement-hero" aria-labelledby="placement-title">
+    <img src="placements/placement-hero.png" alt="DES-TECH Academy technician servicing a commercial HVAC unit" />
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-inner"><p class="eyebrow eyebrow-light">Placements</p><h1 id="placement-title">From training to<br />real opportunities<span class="accent">.</span></h1><p>We provide dedicated placement support, connecting our trained professionals with leading companies in the HVAC and MEP industry.</p></div>
+  </section>
+
+  <section class="highlights" aria-label="Placement highlights">
+    <div class="highlights-inner">
+      <article class="highlight placed"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="14" r="7"/><path d="M3 42v-5c0-8 6-13 14-13s14 5 14 13v5M34 11a7 7 0 1 1 0 14M35 25c6 1 10 6 10 12v5"/></svg><div><strong>100+</strong><span>Students Placed</span></div></article>
+      <article class="highlight featured"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="13"/><path d="m19 18 4 4 7-9M16 29l-3 16 11-6 11 6-3-16"/></svg><p>100% Placement<br />Assured in HVAC &amp; MEP</p></article>
+      <article class="highlight ready"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="m2 15 22-11 22 11-22 11L2 15Z M10 20v12c8 8 20 8 28 0V20M46 15v18"/></svg><div><span>Industry-Ready</span><span>Professionals</span></div></article>
+    </div>
+  </section>
+
+  <section class="companies section-wrap" aria-labelledby="companies-title">
+    <p class="eyebrow">Our hiring companies</p><h2 id="companies-title">Trusted by leading industry brands<span class="accent">.</span></h2>
+    <p class="section-intro">Our candidates are placed in companies authorised to work with leading brands across the HVAC industry.</p>
+    <div class="brand-grid" aria-label="Associated HVAC industry brands">
+      @for (brand of brands; track brand.name) { <div class="brand-card"><img [src]="brand.image" [alt]="brand.name" /></div> }
+    </div>
+  </section>
+
+  <section class="process" aria-labelledby="process-title">
+    <div class="section-wrap"><p class="eyebrow">Our placement process</p><h2 id="process-title">A structured path to your career<span class="accent">.</span></h2>
+      <div class="steps">
+        @for (step of steps; track step.title; let i = $index) {
+          <article class="step"><div class="step-mark" aria-hidden="true">
+            @switch (i) {
+              @case (0) { <svg viewBox="0 0 48 48"><path d="m3 17 21-11 21 11-21 11L3 17Z M10 22v12c8 8 20 8 28 0V22M45 17v17"/></svg> }
+              @case (1) { <svg viewBox="0 0 48 48"><path d="m20 3 8 0 1.4 5.1 4.1 1.7 4.7-2.3 5.7 5.7-2.3 4.7 1.7 4.1L48 28v8l-5.1 1.4-1.7 4.1 2.3 4.7-5.7 5.7-4.7-2.3-4.1 1.7L28 56h-8l-1.4-5.1-4.1-1.7-4.7 2.3-5.7-5.7 2.3-4.7-1.7-4.1L0 36v-8l5.1-1.4 1.7-4.1-2.3-4.7 5.7-5.7 4.7 2.3 4.1-1.7L20 3Z" transform="translate(4 0) scale(.82)"/><circle cx="24" cy="24" r="7"/></svg> }
+              @case (2) { <svg viewBox="0 0 48 48"><circle cx="18" cy="14" r="7"/><path d="M3 43v-5c0-8 6-13 15-13s15 5 15 13v5M34 11a7 7 0 1 1 0 14M36 26c6 1 9 5 9 12v5"/></svg> }
+              @case (3) { <svg viewBox="0 0 48 48"><rect x="4" y="14" width="40" height="29" rx="3"/><path d="M16 14V8h16v6M4 23h40M19 23v6h10v-6"/></svg> }
+            }
+          </div><h3>{{ step.title }}</h3><p>{{ step.description }}</p>@if (i < steps.length - 1) { <span class="step-arrow" aria-hidden="true">→</span> }</article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="placement-cta"><div class="cta-inner"><div><p class="eyebrow eyebrow-light">Start your career with us</p><h2>Get trained, get placed, and build a stable career in the HVAC &amp; MEP industry.</h2></div><a class="button button-light" href="/contact">Apply Now <span aria-hidden="true">→</span></a></div></section>
+</main>
+
+<footer class="site-footer"><div class="footer-inner">
+  <a class="footer-brand" href="/" aria-label="DES-TECH ACADEMY home"><img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" /></a>
+  <p class="footer-address"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M26 13c0 8-10 16-10 16S6 21 6 13a10 10 0 1 1 20 0Z"/><circle cx="16" cy="13" r="3.5"/></svg><span>Attaikulath Apartments,<br />Cheruparambath Road, Kadavanthra,<br />Ernakulam, Kerala.</span></p>
+  <div class="footer-phones"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 4h5l2 7-3 2c2 4 4 6 8 8l2-3 7 2v5c0 2-2 4-4 4C14 27 5 18 4 8c0-2 2-4 4-4Z"/></svg><div>@for (phone of phones; track phone.href) { <a [href]="phone.href">+91 {{ phone.display.slice(0, 5) }} {{ phone.display.slice(5) }}</a> }</div>
+  </div>
+</div></footer>

@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  color-scheme: light;
+  --navy: #0b1b32;
+  --deep: #071629;
+  --cream: #f8f5ef;
+  --white: #fff;
+  --muted: #656b75;
+  --red: #d62832;
+  --line: #e5e1d9;
+  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --sans: 'DM Sans', Arial, sans-serif;
+  font-family: var(--sans);
+  scroll-behavior: smooth;
+  background: var(--cream);
+}
+
+* { box-sizing: border-box; }
+html { min-width: 320px; scroll-padding-top: 20px; }
+body { margin: 0; min-width: 320px; color: var(--navy); background: var(--cream); }
+button, a { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible { outline: 3px solid #e14750; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }

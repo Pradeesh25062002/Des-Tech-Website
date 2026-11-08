@@ -1,0 +1,70 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="DES-TECH ACADEMY home"><img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" /></a>
+    <button class="menu-toggle" type="button" [attr.aria-expanded]="menuOpen()" aria-controls="courses-nav" aria-label="Toggle navigation" (click)="menuOpen.update(value => !value)"><span></span><span></span><span></span></button>
+    <nav id="courses-nav" class="primary-nav" [class.is-open]="menuOpen()" aria-label="Main navigation">
+      <a href="/">Home</a><a href="/about">About</a>
+      <a class="active" href="/courses" aria-current="page" (click)="closeMenu()">Courses</a>
+      <a href="/placements">Placements</a><a href="/student-stories">Student Stories</a><a href="/contact">Contact</a>
+    </nav>
+    <a class="button button-dark header-apply" href="#contact">Apply Now <span aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="courses-hero" aria-labelledby="courses-hero-title">
+    <img src="cloud-network-training.png" alt="IT professional working with cloud computing and networking equipment" />
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-inner"><p class="eyebrow eyebrow-light">Our courses</p><h1 id="courses-hero-title">Industry-relevant training for a brighter future<span class="accent">.</span></h1><p>Choose from our range of technical and non-technical courses designed to build practical skills, industry knowledge and career opportunities.</p></div>
+  </section>
+
+  <div class="category-wrap">
+    <nav class="category-selector" aria-label="Course categories">
+      <a href="#technical-courses" [class.selected]="selectedCategory() === 'technical'" [attr.aria-current]="selectedCategory() === 'technical' ? 'location' : null" (click)="selectCategory('technical', $event)">Technical Courses</a>
+      <a href="#non-technical-courses" [class.selected]="selectedCategory() === 'non-technical'" [attr.aria-current]="selectedCategory() === 'non-technical' ? 'location' : null" (click)="selectCategory('non-technical', $event)">Non-Technical Courses</a>
+    </nav>
+  </div>
+
+  <section class="course-section" id="technical-courses" aria-labelledby="technical-title">
+    <div class="section-wrap">
+      <p class="eyebrow">Technical courses</p><h2 id="technical-title">Build in-demand technical skills<span class="accent">.</span></h2>
+      <p class="section-intro">Gain hands-on experience and industry-relevant skills with structured training and live project exposure.</p>
+      <div class="course-grid">
+        @for (course of technicalCourses; track course.id) { <ng-container *ngTemplateOutlet="courseCard; context: { $implicit: course }"></ng-container> }
+      </div>
+    </div>
+  </section>
+
+  <section class="course-section non-technical" id="non-technical-courses" aria-labelledby="non-technical-title">
+    <div class="section-wrap">
+      <p class="eyebrow">Non-technical courses</p><h2 id="non-technical-title">Develop essential workplace skills<span class="accent">.</span></h2>
+      <p class="section-intro">Gain practical knowledge and industry insights through expert-led online training.</p>
+      <div class="course-grid two-col">
+        @for (course of nonTechnicalCourses; track course.id) { <ng-container *ngTemplateOutlet="courseCard; context: { $implicit: course }"></ng-container> }
+      </div>
+    </div>
+  </section>
+
+  <ng-template #courseCard let-course>
+    <article class="course-card" [id]="course.id">
+      <img class="course-image" [src]="course.image" [alt]="course.alt" />
+      <div class="course-content">
+        <h3>{{ course.title }}</h3>
+        @if (course.subtitle) { <p class="subtitle">{{ course.subtitle }}</p> }
+        @if (course.placement) { <p class="placement">100% Placement Assured</p> }
+        <p class="description">{{ course.description }}</p>
+        <div class="course-info">
+          <div class="info-group mode-group"><p class="details-label">Mode Of Training</p><p class="mode-value">{{ course.mode }}</p></div>
+          <div class="info-group"><p class="details-label">Training Duration</p><ul class="duration-list">@for (item of course.duration; track item) { <li>{{ item }}</li> }</ul></div>
+          <div class="info-group benefits-group"><p class="details-label">Benefits</p><ul class="feature-list">@for (feature of course.features; track feature) { <li>{{ feature }}</li> }</ul></div>
+        </div>
+        <a class="learn-link" href="/contact">Learn More <span aria-hidden="true">→</span></a>
+        <a class="button button-dark enquire" href="/contact">Enquire Now <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+  </ng-template>
+
+  <section class="career-cta"><div class="cta-inner"><div><p class="eyebrow eyebrow-light">Your future starts here</p><h2>Choose the right course. Build your tomorrow.</h2><p>Get expert guidance, practical training and placement support to take the next step in your career.</p></div><a class="button button-light" href="#contact">Apply Now <span aria-hidden="true">→</span></a></div></section>
+</main>
+
+<footer class="site-footer" id="contact"><div class="footer-inner"><a class="footer-brand" href="/" aria-label="DES-TECH ACADEMY home"><img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" /></a><p>{{ address }}</p><a href="tel:+916238882299">+91 6238 882299</a></div></footer>

@@ -1,0 +1,111 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#home" aria-label="DES-TECH ACADEMY home" (click)="closeMenu()">
+      <img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" />
+    </a>
+    <button class="menu-toggle" type="button" [attr.aria-expanded]="menuOpen()" aria-controls="primary-nav" aria-label="Toggle navigation" (click)="menuOpen.update(value => !value)">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="primary-nav" class="primary-nav" [class.is-open]="menuOpen()" aria-label="Main navigation">
+      <a class="active" href="#home" (click)="closeMenu()">Home</a>
+      <a href="/about" (click)="closeMenu()">About</a>
+      <a href="/courses" (click)="closeMenu()">Courses</a>
+      <a href="/placements" (click)="closeMenu()">Placements</a>
+      <a href="/student-stories" (click)="closeMenu()">Student Stories</a>
+      <a href="/contact" (click)="closeMenu()">Contact</a>
+    </nav>
+    <a class="button button-dark header-apply" href="#contact">Apply Now <span aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home" aria-labelledby="hero-title" aria-roledescription="carousel" (mouseenter)="pauseRotation()" (mouseleave)="resumeRotation()" (keydown)="handleCarouselKey($event)">
+    <div class="hero-slides" aria-live="off">
+      @for (slide of heroSlides; track slide.title; let i = $index) {
+        <div class="hero-slide" [class.is-active]="activeSlide() === i" [attr.aria-hidden]="activeSlide() !== i" [attr.aria-label]="(i + 1) + ' of ' + heroSlides.length + ': ' + slide.title" role="group" aria-roledescription="slide">
+          <img class="hero-slide-image" [src]="slide.image" [alt]="slide.alt" />
+          <div class="hero-slide-shade" aria-hidden="true"></div>
+          <div class="slide-course">
+            <p class="slide-kicker">Explore our programs</p>
+            <h2>{{ slide.title }}</h2>
+            <p>{{ slide.description }}</p>
+            <a class="slide-link" [href]="'/courses#' + slide.courseId">Explore course <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-light">Industry-focused training</p>
+        <h1 id="hero-title">Build a career<br />the industry is<br /><em>actually</em> hiring for<span class="accent">.</span></h1>
+        <p class="hero-description">Hands-on training in HVAC, MEP and IT Networking with real-world projects and industry-relevant skills to help you move forward with confidence.</p>
+        <div class="hero-actions">
+          <a class="button button-light" [href]="'/courses#' + heroSlides[activeSlide()].courseId">Explore Courses <span aria-hidden="true">→</span></a>
+          <a class="button button-outline" href="/contact">Enquire Now</a>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-controls" aria-label="Course slides">
+      <button class="carousel-arrow previous" type="button" aria-label="Previous course" (click)="showSlide(activeSlide() - 1)">←</button>
+      <div class="carousel-dots" role="group" aria-label="Choose a course slide">
+        @for (slide of heroSlides; track slide.title; let i = $index) {
+          <button type="button" class="carousel-dot" [class.is-active]="activeSlide() === i" [attr.aria-label]="'Show ' + slide.title" [attr.aria-pressed]="activeSlide() === i" (click)="showSlide(i)"></button>
+        }
+      </div>
+      <button class="carousel-arrow next" type="button" aria-label="Next course" (click)="showSlide(activeSlide() + 1)">→</button>
+    </div>
+  </section>
+
+  <section class="benefits" aria-label="Training benefits">
+    <div class="benefits-inner">
+      @for (benefit of benefits; track benefit.title) {
+        <article class="benefit"><span class="red-rule"></span><div><h2>{{ benefit.title }}</h2><p>{{ benefit.text }}</p></div></article>
+      }
+    </div>
+  </section>
+
+  <section class="about section-wrap" id="about" aria-labelledby="about-title">
+    <div class="about-heading">
+      <p class="eyebrow">Why Destech</p>
+      <h2 id="about-title">Training built<br />around real work<span class="accent">.</span></h2>
+    </div>
+    <div class="feature-list">
+      @for (feature of features; track feature.title; let i = $index) {
+        <article class="feature"><span class="feature-number">0{{ i + 1 }}</span><div><h3>{{ feature.title }}</h3><p>{{ feature.text }}</p></div></article>
+      }
+    </div>
+  </section>
+
+  <section class="courses-section" id="courses" aria-labelledby="courses-title">
+    <div class="section-wrap">
+      <div class="section-heading">
+        <div><p class="eyebrow">Our courses</p><h2 id="courses-title">Courses built for career growth.</h2></div>
+        <a class="text-link" href="#course-list">View all courses <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="course-grid" id="course-list">
+        @for (course of courses; track course.title) {
+          <article class="course-card">
+            <img [src]="course.image" [alt]="course.alt" />
+            <div class="course-content"><h3>{{ course.title }}</h3><p>{{ course.description }}</p><a [href]="'/courses#' + course.id" class="course-link">Explore course <span aria-hidden="true">→</span></a></div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="story-anchor" id="stories" aria-label="Student stories">
+    <span>Student stories</span><p>Practical learning. Skills that move careers forward.</p>
+  </section>
+
+  <section class="career-cta" id="placements" aria-labelledby="cta-title">
+    <div class="cta-inner"><div><p class="eyebrow eyebrow-light">Your next step</p><h2 id="cta-title">Turn your skills into real opportunities.</h2></div><a class="button button-light" href="/contact">Enquire Now <span aria-hidden="true">→</span></a></div>
+  </section>
+</main>
+
+<footer class="site-footer" id="contact">
+  <div class="footer-inner">
+    <a class="brand footer-brand" href="#home" aria-label="DES-TECH ACADEMY home"><img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" /></a>
+    <p class="footer-address"><span class="footer-icon" aria-hidden="true">⌖</span>{{ contact.address }}</p>
+    <a class="footer-phone" [href]="'tel:' + contact.phoneLink"><span class="footer-icon" aria-hidden="true">♧</span>{{ contact.phone }}</a>
+  </div>
+</footer>

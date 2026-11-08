@@ -1,0 +1,53 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="DES-TECH ACADEMY home"><img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" /></a>
+    <button class="menu-toggle" type="button" [attr.aria-expanded]="menuOpen()" aria-controls="stories-nav" aria-label="Toggle navigation" (click)="menuOpen.update(value => !value)"><span></span><span></span><span></span></button>
+    <nav id="stories-nav" class="primary-nav" [class.is-open]="menuOpen()" aria-label="Main navigation">
+      <a href="/" (click)="closeMenu()">Home</a><a href="/about" (click)="closeMenu()">About</a><a href="/courses" (click)="closeMenu()">Courses</a><a href="/placements" (click)="closeMenu()">Placements</a><a class="active" href="/student-stories" aria-current="page" (click)="closeMenu()">Student Stories</a><a href="/contact" (click)="closeMenu()">Contact</a>
+    </nav>
+    <a class="button button-dark header-apply" href="/contact">Apply Now <span aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="stories-hero" aria-labelledby="stories-title">
+    <img src="hvac-hero.png" alt="Technician working with industrial HVAC equipment" />
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-inner"><p class="eyebrow eyebrow-light">Student stories</p><h1 id="stories-title">Real stories.<br />Real careers<span class="accent">.</span></h1><p>Hear from our students who gained practical skills, industry exposure and rewarding job opportunities through DES-TECH ACADEMY.</p></div>
+  </section>
+
+  <section class="achievement-strip" aria-label="Student achievement highlights">
+    <div class="achievement-inner">
+      <article class="achievement"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="11" cy="10" r="5"/><path d="M2 28v-3c0-5 4-8 9-8s9 3 9 8v3M23 11a4 4 0 1 0 0-8M23 18c4 0 7 2 7 6v4"/></svg><p><strong>100+</strong><span>Students Placed</span></p></article>
+      <article class="achievement"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="15" cy="12" r="9"/><path d="m11 12 3 3 5-6M9 20l-2 9 8-4 7 4-2-9"/></svg><p><strong>Industry</strong><span>Recognised Training</span></p></article>
+      <article class="achievement"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="9" width="26" height="19" rx="2"/><path d="M11 9V5h10v4M3 15h26M13 15v4h6v-4"/></svg><p><strong>Opportunities</strong><span>With Leading Brands</span></p></article>
+      <article class="achievement"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="11" cy="10" r="5"/><circle cx="23" cy="11" r="4"/><path d="M2 28v-3c0-5 4-8 9-8s9 3 9 8v3M21 19c5 0 8 2 8 6v3"/></svg><p><strong>A Growing</strong><span>Alumni Network</span></p></article>
+    </div>
+  </section>
+
+  <section class="stories-section" id="student-stories-list" aria-labelledby="student-list-title">
+    <div class="section-wrap"><p class="eyebrow">Our student stories</p><h2 id="student-list-title">Hear from our placed students<span class="accent">.</span></h2><p class="section-intro">Real experiences from students who turned their training into a successful career.</p>
+      <div class="student-grid" aria-live="polite" aria-atomic="true">
+        @for (student of visibleStudents; track student.name) {
+          <article class="student-card">
+            <img class="student-photo" [src]="student.image" [alt]="'Portrait of ' + student.name" />
+            <div class="student-info"><h3>{{ student.name }}</h3><p class="designation">{{ student.designation }}</p><div class="company"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V4h11v17M15 10h5v11M2 21h20M8 8h3M8 12h3M8 16h3M17 14h1M17 17h1"/></svg><span>{{ student.company }}</span></div></div>
+          </article>
+        }
+      </div>
+      <nav class="pagination" aria-label="Student stories pages">
+        <button class="page-arrow" type="button" aria-label="Previous page" [disabled]="currentPage() === 1" (click)="goToPage(currentPage() - 1)">← <span>Previous</span></button>
+        @for (page of [1, 2, 3]; track page) { <button class="page-number" type="button" [class.selected]="currentPage() === page" [attr.aria-current]="currentPage() === page ? 'page' : null" [attr.aria-label]="'Page ' + page" (click)="goToPage(page)">{{ page }}</button> }
+        <button class="page-arrow" type="button" aria-label="Next page" [disabled]="currentPage() === 3" (click)="goToPage(currentPage() + 1)"><span>Next</span> →</button>
+      </nav>
+    </div>
+  </section>
+
+  <section class="stories-cta"><div class="cta-inner"><div><p class="eyebrow eyebrow-light">Be the next success story</p><h2>Join DES-TECH ACADEMY and build your own success story<span class="accent">.</span></h2></div><a class="button button-light" href="/contact">Apply Now <span aria-hidden="true">→</span></a></div></section>
+</main>
+
+<footer class="site-footer"><div class="footer-inner">
+  <a class="footer-brand" href="/" aria-label="DES-TECH ACADEMY home"><img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" /></a>
+  <p class="footer-address">Attaikulath Apartments, Cheruparambath Road, Kadavanthra, Ernakulam, Kerala.</p>
+  <div class="footer-phones">@for (phone of phones; track phone.href) { <a [href]="phone.href">{{ phone.display }}</a> }</div>
+</div></footer>

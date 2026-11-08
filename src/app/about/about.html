@@ -1,0 +1,102 @@
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="DES-TECH ACADEMY home" (click)="closeMenu()">
+      <img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" />
+    </a>
+    <button class="menu-toggle" type="button" [attr.aria-expanded]="menuOpen()" aria-controls="about-nav" aria-label="Toggle navigation" (click)="menuOpen.update(value => !value)">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="about-nav" class="primary-nav" [class.is-open]="menuOpen()" aria-label="Main navigation">
+      <a href="/" (click)="closeMenu()">Home</a>
+      <a class="active" href="/about" aria-current="page" (click)="closeMenu()">About</a>
+      <a href="/courses" (click)="closeMenu()">Courses</a>
+      <a href="/placements" (click)="closeMenu()">Placements</a>
+      <a href="/student-stories" (click)="closeMenu()">Student Stories</a>
+      <a href="/contact" (click)="closeMenu()">Contact</a>
+    </nav>
+    <a class="button button-dark header-apply" href="/#contact">Apply Now <span aria-hidden="true">→</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="about-hero" aria-labelledby="about-hero-title">
+    <img class="about-hero-image" src="hvac-hero.png" alt="HVAC technician wearing a hard hat servicing commercial air-conditioning equipment" />
+    <div class="about-hero-shade" aria-hidden="true"></div>
+    <div class="about-hero-inner">
+      <p class="eyebrow eyebrow-light">About Destech</p>
+      <h1 id="about-hero-title">Practical training<br />for real-world<br />opportunities<span class="accent">.</span></h1>
+      <p>At DES-TECH ACADEMY, we equip students with industry-relevant skills, hands-on training and career support to help them build a brighter and more secure future.</p>
+    </div>
+  </section>
+
+  <section class="who section-wrap" aria-labelledby="who-title">
+    <div class="who-heading"><p class="eyebrow">Who we are</p><h2 id="who-title">Building skilled professionals for tomorrow<span class="accent">.</span></h2></div>
+    <div class="who-copy">
+      <p>DES-TECH ACADEMY is a Centre for Advanced Professional Studies focused on practical, industry-oriented training in HVAC, MEP, IT Networking, AWS, Health, Safety &amp; Environment Management, Warehouse Management and other essential domains.</p>
+      <p>We bridge the gap between education and industry needs through hands-on learning, modern lab facilities and dedicated placement support, enabling students to start their careers with confidence.</p>
+    </div>
+    <div class="who-benefits" aria-label="Our training benefits">
+      <div class="who-benefit"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m3 11 13-7 13 7-13 7-13-7Z M8 14v8c5 5 11 5 16 0v-8 M29 11v10" /></svg><span>Industry-focused<br />training</span></div>
+      <div class="who-benefit"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M13 3h6l1 4 3 1 4-2 3 5-3 3v4l3 3-3 5-4-2-3 1-1 4h-6l-1-4-3-1-4 2-3-5 3-3v-4l-3-3 3-5 4 2 3-1 1-4Z M16 12a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" /></svg><span>Hands-on practical<br />learning</span></div>
+      <div class="who-benefit"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="10" width="26" height="18" rx="1"/><path d="M11 10V6h10v4 M3 16h26 M13 16v3h6v-3" /></svg><span>Placement<br />assistance</span></div>
+    </div>
+  </section>
+
+  <section class="approach" aria-labelledby="approach-title">
+    <div class="approach-image"><img src="cloud-network-training.png" alt="IT professional working in a cloud computing and networking lab with server racks" /></div>
+    <div class="approach-copy">
+      <p class="eyebrow">Our approach</p>
+      <h2 id="approach-title">Learning through<br />real experience.</h2>
+      <p>We combine structured training, live equipment practice and industry insights to give you the skills and confidence to work in real-world environments.</p>
+      <a class="approach-link" href="/#courses">Know more about our approach <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="why section-wrap" aria-labelledby="why-title">
+    <p class="eyebrow">Why choose Destech</p>
+    <h2 id="why-title">More than just a training institute.</h2>
+    <div class="advantage-grid">
+      @for (advantage of advantages; track advantage.title) {
+        <article class="advantage">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            @switch (advantage.icon) {
+              @case ('building') { <path d="M5 28V5h15v23 M20 12h7v16 M2 28h28 M10 10h2 M16 10h1 M10 15h2 M16 15h1 M10 20h2 M16 20h1 M10 28v-4h4v4" /> }
+              @case ('people') { <path d="M12 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z M23 14a4 4 0 1 0 0-8 M3 28v-3c0-4 4-7 9-7s9 3 9 7v3 M22 19c4 0 7 2 7 6v3" /> }
+              @case ('curriculum') { <path d="M8 4h18v23H8z M4 8v21h18 M12 10h10 M12 15h10 M12 20h7" /> }
+              @case ('growth') { <path d="M4 27V19h5v8 M13 27V13h5v14 M22 27V6h5v21 M4 13l8-6 6 2 9-7 M22 2h5v5" /> }
+            }
+          </svg>
+          <h3>{{ advantage.title }}</h3><p>{{ advantage.text }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="impact" aria-labelledby="impact-title">
+    <div class="impact-inner">
+      <div class="impact-heading"><p class="eyebrow eyebrow-light">Our impact</p><h2 id="impact-title">Creating<br />career-ready<br />professionals<span class="accent">.</span></h2></div>
+      <div class="impact-metrics">
+        @for (metric of impactMetrics; track metric.label) {
+          <div class="impact-metric"><p>{{ metric.value }}</p><span>{{ metric.label }}</span></div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="vision-mission section-wrap">
+    <article class="vision-item"><p class="eyebrow">Our vision</p><div class="vision-copy"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="20" cy="24" r="15"/><circle cx="20" cy="24" r="9"/><circle cx="20" cy="24" r="3"/><path d="m22 22 13-13 M29 8h7v7" /></svg><p>To be a leading centre for professional education that empowers individuals with skills for a brighter future.</p></div></article>
+    <article class="vision-item"><p class="eyebrow">Our mission</p><div class="vision-copy"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M22 5v30 M22 7 35 13H22 M22 16 11 11v15l11-5 M13 35h20l-10-7-10 7Z" /></svg><p>To deliver high-quality, hands-on training and career support that meets industry needs and creates meaningful opportunities.</p></div></article>
+  </section>
+
+  <section class="about-cta" aria-labelledby="journey-title">
+    <div class="about-cta-inner"><div><p class="eyebrow eyebrow-light">Be a part of our journey</p><h2 id="journey-title">Turn your skills into real opportunities<span class="accent">.</span></h2></div><a class="button button-light" href="/#contact">Apply Now <span aria-hidden="true">→</span></a></div>
+  </section>
+</main>
+
+<footer class="site-footer" id="contact">
+  <div class="footer-inner">
+    <a class="brand footer-brand" href="/" aria-label="DES-TECH ACADEMY home"><img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" /></a>
+    <p class="footer-address"><span class="footer-icon" aria-hidden="true">⌖</span>Near Tripunithura, Kochi, Ernakulam, Kerala – 682301</p>
+    <a class="footer-phone" href="tel:+916238882299"><span class="footer-icon" aria-hidden="true">♧</span>+91 6238 882299</a>
+  </div>
+</footer>
