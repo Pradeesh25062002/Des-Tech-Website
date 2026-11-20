@@ -1,59 +1,50 @@
-# DestechWEB
+# DES-TECH Academy Website
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.5.
+Responsive Angular website for DES-TECH ACADEMY, Centre for Advanced Professional Studies. The site presents the academy's training programs, practical learning approach, placement support, student stories, and enquiry options.
 
-## Development server
+## Pages
 
-To start a local development server, run:
+| Path | Page |
+| --- | --- |
+| `/` | Home |
+| `/about` | About the academy |
+| `/courses` | Training courses |
+| `/placements` | Placement support and partner companies |
+| `/student-stories` | Student experiences |
+| `/contact` | Contact information |
+| `/enquiry` | Course enquiry |
 
-```bash
-ng serve
-```
+## Requirements
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Node.js and npm
+- Dependencies installed from `package-lock.json`
 
-## Code scaffolding
+## Run locally
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+From the repository root:
 
 ```bash
-ng build
+npm ci
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Open [http://localhost:4200](http://localhost:4200). The Angular development server reloads the app when source files change.
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Build and checks
 
 ```bash
-ng test
+npm run build
+npm test -- --watch=false
+npm run test:apps-script
 ```
 
-## Running end-to-end tests
+The production build is written to `dist/`. Angular component tests run with Vitest. The Apps Script tests use Node's built-in test runner. There is no end-to-end test framework configured.
 
-For end-to-end (e2e) testing, run:
+## Project structure
 
-```bash
-ng e2e
-```
+- `src/app/` — Angular routes, page components, and the shared site footer
+- `src/styles.css` — global styles and design tokens
+- `public/` — logos, page imagery, and other static assets served as-is
+- `google-apps-script/` — Apps Script integration files and their tests
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Page-specific content and repeated display data are maintained in the corresponding TypeScript component files. Keep assets local in `public/` and use descriptive alternative text for meaningful images.
