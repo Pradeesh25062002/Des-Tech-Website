@@ -17,19 +17,20 @@
 .button-outline:hover { color: var(--navy); background: white; }
 .menu-toggle { display: none; }
 
-.hero { min-height: 370px; position: relative; isolation: isolate; background: var(--deep); color: white; overflow: hidden; }
+.hero { min-height: var(--editorial-hero-height); position: relative; isolation: isolate; background: var(--deep); color: white; overflow: hidden; }
 .hero-slides, .hero-slide { position: absolute; inset: 0; }
 .hero-slide { opacity: 0; visibility: hidden; transition: opacity .65s ease, visibility .65s ease; }
 .hero-slide.is-active { opacity: 1; visibility: visible; }
 .hero-slide-image { position: absolute; inset: 0 0 0 34%; display: block; width: 66%; height: 100%; object-fit: cover; object-position: center 45%; }
 .hero-slide-shade { position: absolute; inset: 0; background: linear-gradient(90deg, var(--deep) 0%, rgba(7,22,41,.91) 30%, rgba(7,22,41,.45) 59%, rgba(7,22,41,.18) 100%); }
-.hero-inner { position: relative; z-index: 1; width: min(1120px, calc(100% - 48px)); min-height: 370px; margin: auto; display: flex; align-items: center; }
+.hero-inner { position: relative; z-index: 1; width: min(1120px, calc(100% - 48px)); min-height: var(--editorial-hero-height); margin: auto; display: flex; align-items: center; }
 .hero-copy { width: 440px; padding: 31px 0; }
+.hero .eyebrow { gap: 12px; margin-bottom: 15px; font-size: 9px; letter-spacing: .19em; }
 .eyebrow { margin: 0 0 15px; color: var(--red); text-transform: uppercase; font: 600 10px/1.2 var(--sans); letter-spacing: .2em; display: flex; align-items: center; gap: 14px; }
 .eyebrow::before { content: ''; height: 2px; width: 26px; background: var(--red); }
 .eyebrow-light { color: #fff; }
 h1, h2, h3, p { margin-top: 0; }
-.hero h1 { max-width: 470px; margin: 0 0 12px; font: 400 clamp(38px, 4vw, 50px)/.99 var(--serif); letter-spacing: -.035em; }
+.hero h1 { max-width: 470px; margin: 0 0 12px; font: 400 var(--editorial-hero-title-size)/.99 var(--serif); letter-spacing: -.035em; }
 .hero h1 em { font-weight: 400; }
 .accent { color: var(--red); }
 .hero-description { max-width: 390px; margin-bottom: 15px; color: rgba(255,255,255,.9); font: 13px/1.42 var(--serif); }
@@ -95,7 +96,6 @@ h1, h2, h3, p { margin-top: 0; }
 .footer-phone { border-right: 0; white-space: nowrap; }
 .footer-icon { color: var(--navy); font: 20px/1 var(--sans); }
 
-@media (min-width: 1500px) { .hero, .hero-inner { min-height: 390px; } }
 @media (max-width: 1050px) {
   .header-inner { gap: 20px; }
   .brand { flex-basis: 270px; }
@@ -105,7 +105,7 @@ h1, h2, h3, p { margin-top: 0; }
   .course-content { padding: 10px; }
   .course-content h3 { font-size: 15px; }
 }
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .header-inner { width: calc(100% - 36px); min-height: 66px; gap: 12px; }
   .brand { flex: 0 1 260px; }
   .header-apply { display: none; }
@@ -115,12 +115,12 @@ h1, h2, h3, p { margin-top: 0; }
   .primary-nav.is-open { display: flex; }
   .primary-nav a { padding: 13px 4px; border-bottom: 1px solid var(--line); }
   .primary-nav a::after { bottom: 6px; left: 4px; right: 100%; width: 25px; }
-  .hero { min-height: 665px; }
+  .hero { min-height: var(--editorial-hero-mobile-height); }
   .hero-slide-image { inset: 0; width: 100%; height: 100%; object-position: 61% center; }
   .hero-slide-shade { background: linear-gradient(180deg, rgba(7,22,41,.48), rgba(7,22,41,.86) 43%, var(--deep) 100%); }
-  .hero-inner { width: calc(100% - 40px); min-height: 665px; align-items: flex-start; }
+  .hero-inner { width: calc(100% - 40px); min-height: var(--editorial-hero-mobile-height); align-items: flex-start; }
   .hero-copy { width: min(450px, 100%); padding: 31px 0 0; }
-  .hero h1 { font-size: clamp(41px, 11vw, 54px); }
+  .hero h1 { font-size: var(--editorial-hero-mobile-title-size); }
   .hero-description { max-width: 390px; }
   .slide-course { left: 20px; right: 20px; bottom: 64px; width: auto; padding: 15px 17px; }
   .slide-course h2 { font-size: 21px; }
@@ -153,7 +153,7 @@ h1, h2, h3, p { margin-top: 0; }
 }
 @media (max-width: 400px) {
   .brand { flex-basis: 220px; }
-  .hero h1 { font-size: 40px; }
+  .hero h1 { font-size: var(--editorial-hero-mobile-title-size); }
   .hero-actions { gap: 8px; }
   .button { padding: 0 14px; }
   .section-heading { display: block; }

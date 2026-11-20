@@ -1,6 +1,7 @@
 import { Component, DestroyRef, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { SiteFooterComponent } from '../shared/site-footer/site-footer';
 
 type StudentStory = {
   name: string;
@@ -12,6 +13,7 @@ type StudentStory = {
 
 @Component({
   selector: 'app-student-stories',
+  imports: [SiteFooterComponent],
   templateUrl: './student-stories.html',
   styleUrl: './student-stories.css',
 })
@@ -108,11 +110,6 @@ export class StudentStoriesPage {
       image: 'student-stories/ebin-vinodhan.jpg',
     },
   ];
-  protected readonly phones = [
-    { display: '8590093998', href: 'tel:+918590093998' },
-    { display: '8921219805', href: 'tel:+918921219805' },
-  ];
-
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,

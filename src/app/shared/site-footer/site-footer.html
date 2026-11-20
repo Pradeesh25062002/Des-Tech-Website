@@ -1,0 +1,18 @@
+<footer class="site-footer" id="contact">
+  <div class="footer-inner">
+    <a class="footer-brand" href="/" aria-label="DES-TECH ACADEMY home">
+      <img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" />
+    </a>
+    <div class="footer-address">
+      <strong>DES-TECH ACADEMY</strong>
+      @for (line of address; track line) {
+        <span>{{ line }}</span>
+      }
+    </div>
+    <div class="footer-phones" aria-label="Academy phone numbers">
+      @for (phone of phones; track phone.href) {
+        <a [href]="phone.href">{{ phone.display }}</a>
+      }
+    </div>
+  </div>
+</footer>

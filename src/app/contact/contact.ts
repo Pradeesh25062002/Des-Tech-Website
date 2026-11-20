@@ -1,7 +1,9 @@
 import { Component, signal } from '@angular/core';
+import { SiteFooterComponent } from '../shared/site-footer/site-footer';
 
 @Component({
   selector: 'app-contact',
+  imports: [SiteFooterComponent],
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })

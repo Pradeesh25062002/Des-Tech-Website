@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { SiteFooterComponent } from '../shared/site-footer/site-footer';
 
 type Course = {
   id: string;
@@ -18,7 +19,7 @@ type Course = {
 
 @Component({
   selector: 'app-courses',
-  imports: [CommonModule],
+  imports: [CommonModule, SiteFooterComponent],
   templateUrl: './courses.html',
   styleUrl: './courses.css',
 })
@@ -65,8 +66,6 @@ export class CoursesPage implements AfterViewInit {
 
   protected readonly technicalCourses = this.courses.filter((course) => course.category === 'technical');
   protected readonly nonTechnicalCourses = this.courses.filter((course) => course.category === 'non-technical');
-  protected readonly address = 'Near Tripunithura, Kochi, Ernakulam, Kerala – 682301';
-
   constructor(private readonly route: ActivatedRoute) {}
 
   ngAfterViewInit(): void {

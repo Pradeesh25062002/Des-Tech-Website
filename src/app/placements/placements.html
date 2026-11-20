@@ -10,7 +10,7 @@
 </header>
 
 <main>
-  <section class="placement-hero" aria-labelledby="placement-title">
+  <section class="placement-hero editorial-hero" aria-labelledby="placement-title">
     <img src="placements/placement-hero.png" alt="DES-TECH Academy technician servicing a commercial HVAC unit" />
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="hero-inner"><p class="eyebrow eyebrow-light">Placements</p><h1 id="placement-title">From training to<br />real opportunities<span class="accent">.</span></h1><p>We provide dedicated placement support, connecting our trained professionals with leading companies in the HVAC and MEP industry.</p></div>
@@ -52,9 +52,4 @@
   <section class="placement-cta"><div class="cta-inner"><div><p class="eyebrow eyebrow-light">Start your career with us</p><h2>Get trained, get placed, and build a stable career in the HVAC &amp; MEP industry.</h2></div><a class="button button-light" href="/enquiry?source=Placements%20Page">Apply Now <span aria-hidden="true">→</span></a></div></section>
 </main>
 
-<footer class="site-footer"><div class="footer-inner">
-  <a class="footer-brand" href="/" aria-label="DES-TECH ACADEMY home"><img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" /></a>
-  <p class="footer-address"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M26 13c0 8-10 16-10 16S6 21 6 13a10 10 0 1 1 20 0Z"/><circle cx="16" cy="13" r="3.5"/></svg><span>Attaikulath Apartments,<br />Cheruparambath Road, Kadavanthra,<br />Ernakulam, Kerala.</span></p>
-  <div class="footer-phones"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 4h5l2 7-3 2c2 4 4 6 8 8l2-3 7 2v5c0 2-2 4-4 4C14 27 5 18 4 8c0-2 2-4 4-4Z"/></svg><div>@for (phone of phones; track phone.href) { <a [href]="phone.href">+91 {{ phone.display.slice(0, 5) }} {{ phone.display.slice(5) }}</a> }</div>
-  </div>
-</div></footer>
+<app-site-footer />

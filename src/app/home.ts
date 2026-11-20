@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit, signal } from '@angular/core';
+import { SiteFooterComponent } from './shared/site-footer/site-footer';
 
 @Component({
   selector: 'app-home',
+  imports: [SiteFooterComponent],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -84,12 +86,6 @@ export class HomePage implements OnInit, OnDestroy {
       alt: 'Blue network cabling and server equipment',
     },
   ];
-
-  protected readonly contact = {
-    address: 'Near Tripunithura, Kochi, Ernakulam, Kerala – 682301',
-    phone: '+91 6238 882299',
-    phoneLink: '+916238882299',
-  };
 
   ngOnInit(): void {
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

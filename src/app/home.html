@@ -19,7 +19,7 @@
 </header>
 
 <main>
-  <section class="hero" id="home" aria-labelledby="hero-title" aria-roledescription="carousel" (mouseenter)="pauseRotation()" (mouseleave)="resumeRotation()" (keydown)="handleCarouselKey($event)">
+  <section class="hero editorial-hero" id="home" aria-labelledby="hero-title" aria-roledescription="carousel" (mouseenter)="pauseRotation()" (mouseleave)="resumeRotation()" (keydown)="handleCarouselKey($event)">
     <div class="hero-slides" aria-live="off">
       @for (slide of heroSlides; track slide.title; let i = $index) {
         <div class="hero-slide" [class.is-active]="activeSlide() === i" [attr.aria-hidden]="activeSlide() !== i" [attr.aria-label]="(i + 1) + ' of ' + heroSlides.length + ': ' + slide.title" role="group" aria-roledescription="slide">
@@ -102,10 +102,4 @@
   </section>
 </main>
 
-<footer class="site-footer" id="contact">
-  <div class="footer-inner">
-    <a class="brand footer-brand" href="#home" aria-label="DES-TECH ACADEMY home"><img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" /></a>
-    <p class="footer-address"><span class="footer-icon" aria-hidden="true">⌖</span>{{ contact.address }}</p>
-    <a class="footer-phone" [href]="'tel:' + contact.phoneLink"><span class="footer-icon" aria-hidden="true">♧</span>{{ contact.phone }}</a>
-  </div>
-</footer>
+<app-site-footer />

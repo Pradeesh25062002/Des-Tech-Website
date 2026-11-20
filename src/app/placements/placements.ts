@@ -1,7 +1,9 @@
 import { Component, signal } from '@angular/core';
+import { SiteFooterComponent } from '../shared/site-footer/site-footer';
 
 @Component({
   selector: 'app-placements',
+  imports: [SiteFooterComponent],
   templateUrl: './placements.html',
   styleUrl: './placements.css',
 })
@@ -19,10 +21,6 @@ export class PlacementsPage {
     { title: 'Industry Readiness', description: 'Resume, interview and soft-skills support.' },
     { title: 'Company Connect', description: 'Opportunities with authorised industry partners.' },
     { title: 'Placement Support', description: 'Guidance until you join your role.' },
-  ];
-  protected readonly phones = [
-    { display: '8590093998', href: 'tel:+918590093998' },
-    { display: '8921219805', href: 'tel:+918921219805' },
   ];
   protected closeMenu(): void { this.menuOpen.set(false); }
 }

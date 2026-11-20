@@ -9,6 +9,11 @@
   --muted: #656b75;
   --red: #d62832;
   --line: #e5e1d9;
+  --editorial-hero-height: 370px;
+  --editorial-hero-wide-height: 390px;
+  --editorial-hero-mobile-height: 560px;
+  --editorial-hero-title-size: clamp(38px, 4vw, 50px);
+  --editorial-hero-mobile-title-size: clamp(35px, 9.5vw, 44px);
   --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --sans: 'DM Sans', Arial, sans-serif;
   font-family: var(--sans);
@@ -22,3 +27,7 @@ body { margin: 0; min-width: 320px; color: var(--navy); background: var(--cream)
 button, a { -webkit-tap-highlight-color: transparent; }
 a:focus-visible, button:focus-visible { outline: 3px solid #e14750; outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+
+@media (min-width: 1500px) {
+  :root { --editorial-hero-height: var(--editorial-hero-wide-height); }
+}

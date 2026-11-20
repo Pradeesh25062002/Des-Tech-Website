@@ -3,6 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { EnquiryService } from './enquiry.service';
+import { SiteFooterComponent } from '../shared/site-footer/site-footer';
 import {
   EnquiryCourse,
   EnquiryRequest,
@@ -28,7 +29,7 @@ const sourcePages = [
 
 @Component({
   selector: 'app-enquiry',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, SiteFooterComponent],
   templateUrl: './enquiry.html',
   styleUrl: './enquiry.css',
 })

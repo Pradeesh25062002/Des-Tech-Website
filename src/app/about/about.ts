@@ -1,18 +1,20 @@
 import { Component, signal } from '@angular/core';
+import { SiteFooterComponent } from '../shared/site-footer/site-footer';
 
 @Component({
   selector: 'app-about',
+  imports: [SiteFooterComponent],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
 export class AboutPage {
   protected readonly menuOpen = signal(false);
 
-  protected readonly impactMetrics = [
-    { value: 'Dedicated', label: 'Placement assistance' },
-    { value: 'Career-focused', label: 'Training programs' },
-    { value: 'Modern', label: 'Lab facilities' },
-    { value: 'Experienced', label: 'Trainers and mentors' },
+  protected readonly journeyStages = [
+    { number: '01', title: 'Learn', description: 'Build strong technical foundations.' },
+    { number: '02', title: 'Practice', description: 'Gain practical, hands-on experience.' },
+    { number: '03', title: 'Get Industry Ready', description: 'Develop skills relevant to real workplace requirements.' },
+    { number: '04', title: 'Career Support', description: 'Receive guidance and placement assistance.' },
   ];
 
   protected readonly advantages = [

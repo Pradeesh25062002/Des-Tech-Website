@@ -60,10 +60,4 @@
   <section class="contact-cta"><div class="cta-inner"><div><p class="eyebrow eyebrow-light">Take the next step</p><h2>Explore our courses and start your journey today.</h2></div><a class="button button-light" href="/enquiry?source=Contact%20Page">Apply Now <span aria-hidden="true">→</span></a></div></section>
 </main>
 
-<footer class="site-footer" id="contact">
-  <div class="footer-inner">
-    <a class="footer-brand" href="/" aria-label="DES-TECH ACADEMY home"><img src="destech-logo.jpg" alt="DES-TECH ACADEMY — Centre for Advanced Professional Studies" /></a>
-    <div class="footer-address"><strong>DES-TECH ACADEMY</strong>@for (line of addressLines; track line) { <span>{{ line }}</span> }</div>
-    <div class="footer-phones">@for (phone of phones; track phone.href) { <a [href]="phone.href">{{ phone.display }}</a> }</div>
-  </div>
-</footer>
+<app-site-footer />

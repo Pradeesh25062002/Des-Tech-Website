@@ -10,16 +10,18 @@
 .button { display: inline-flex; min-height: 42px; padding: 0 20px; align-items: center; justify-content: center; gap: 12px; font: 600 12px/1 var(--sans); text-decoration: none; }
 .button-dark { color: white; background: var(--navy); }
 .menu-toggle { display: none; }
-.stories-hero { min-height: 330px; position: relative; isolation: isolate; display: flex; align-items: center; overflow: hidden; background: var(--deep); color: white; }
-.stories-hero > img { position: absolute; z-index: -2; inset: 0 0 0 35%; width: 65%; height: 100%; object-fit: cover; object-position: center 43%; }
-.hero-shade { position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, var(--deep) 0%, rgba(7,22,41,.92) 35%, rgba(7,22,41,.48) 68%, rgba(7,22,41,.2)); }
-.hero-inner { width: min(1120px, calc(100% - 48px)); margin: auto; padding: 40px 0; }
+.stories-hero { min-height: var(--editorial-hero-height); position: relative; isolation: isolate; display: flex; align-items: center; overflow: hidden; background: var(--deep); color: white; }
+.stories-hero > img { position: absolute; z-index: -2; inset: 0 0 0 34%; width: 66%; height: 100%; object-fit: cover; object-position: center 45%; }
+.hero-shade { position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, var(--deep) 0%, rgba(7,22,41,.91) 30%, rgba(7,22,41,.45) 59%, rgba(7,22,41,.18) 100%); }
+.hero-inner { width: min(1120px, calc(100% - 48px)); margin: auto; padding: 31px 0; }
 .eyebrow { display: flex; align-items: center; gap: 12px; margin: 0 0 13px; color: var(--red); text-transform: uppercase; font: 600 10px/1.2 var(--sans); letter-spacing: .17em; }
 .eyebrow::before { content: ''; width: 25px; height: 2px; background: var(--red); }
+.stories-hero .eyebrow { margin-bottom: 15px; font-size: 9px; letter-spacing: .19em; }
+.stories-hero .eyebrow::before { width: 26px; }
 .eyebrow-light { color: white; }
-.stories-hero h1 { max-width: 480px; margin: 0 0 10px; font: 400 clamp(42px, 5vw, 58px)/.98 var(--serif); letter-spacing: -.03em; }
+.stories-hero h1 { max-width: 470px; margin: 0 0 12px; font: 400 var(--editorial-hero-title-size)/.99 var(--serif); letter-spacing: -.035em; }
 .accent { color: var(--red); }
-.hero-inner > p:last-child { max-width: 445px; margin: 0; color: rgba(255,255,255,.88); font: 13px/1.48 var(--sans); }
+.hero-inner > p:last-child { max-width: 390px; margin: 0; color: rgba(255,255,255,.9); font: 13px/1.42 var(--serif); }
 .achievement-strip { background: var(--cream); border-bottom: 1px solid var(--line); }
 .achievement-inner { width: min(1120px, calc(100% - 48px)); min-height: 80px; margin: auto; display: grid; grid-template-columns: repeat(4, 1fr); }
 .achievement { display: flex; align-items: center; justify-content: center; gap: 11px; padding: 10px 14px; border-right: 1px solid #d3cfc7; }
@@ -73,7 +75,7 @@
   .testimonial p { font-size: 10px; }
   .company { padding: 7px; }
 }
-@media (max-width: 767px) {
+@media (max-width: 900px) {
   .header-inner { width: calc(100% - 36px); min-height: 66px; }
   .brand { flex-basis: 250px; }
   .header-apply { display: none; }
@@ -83,11 +85,11 @@
   .primary-nav.is-open { display: flex; }
   .primary-nav a { padding: 13px 4px; border-bottom: 1px solid var(--line); font-size: 12px; }
   .primary-nav a::after { bottom: 6px; left: 4px; width: 25px; }
-  .stories-hero { min-height: 385px; align-items: flex-end; }
-  .stories-hero > img { inset: 0; width: 100%; height: 100%; object-position: 63% center; }
+  .stories-hero { min-height: var(--editorial-hero-mobile-height); align-items: flex-end; }
+  .stories-hero > img { inset: 0; width: 100%; height: 100%; object-position: 100% center; }
   .hero-shade { background: linear-gradient(180deg, rgba(7,22,41,.15), rgba(7,22,41,.7) 38%, var(--deep) 100%); }
-  .hero-inner { width: calc(100% - 40px); padding: 45px 0 28px; }
-  .stories-hero h1 { font-size: clamp(42px, 11vw, 54px); }
+  .hero-inner { width: calc(100% - 40px); padding: 31px 0 28px; }
+  .stories-hero h1 { font-size: var(--editorial-hero-mobile-title-size); }
   .achievement-inner { width: 100%; min-height: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 8px 18px; }
   .achievement { justify-content: flex-start; min-height: 65px; padding: 8px 6px; border-right: 0; }
   .achievement:nth-child(odd) { border-right: 1px solid #d3cfc7; }
