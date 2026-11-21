@@ -52,7 +52,23 @@
 .success-card h2 { margin: 0 0 10px; color: var(--navy); font: 400 clamp(26px, 3vw, 34px)/1.12 var(--serif); }
 .success-card > p:not(.eyebrow) { margin: 0 0 20px; color: #414b59; font: 13px/1.6 var(--sans); }
 .success-card .notification-note { padding: 10px 12px; border-left: 2px solid #b77a13; background: #fff8e7; }
-.success-card .button { margin-top: 4px; }
+.success-card .button {
+  display: inline-flex;
+  min-height: 44px;
+  margin-top: 4px;
+  padding: 0 20px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid var(--navy);
+  background: var(--navy);
+  color: white;
+  text-decoration: none;
+  font: 600 12px/1 var(--sans);
+  transition: background .2s ease, border-color .2s ease;
+}
+.success-card .button:hover { border-color: #173458; background: #173458; }
+.success-card .button:focus-visible { outline: 3px solid rgba(214,40,50,.45); outline-offset: 3px; }
 .site-footer { border-top: 1px solid var(--line); background: var(--cream); }
 .footer-inner { width: min(1050px, calc(100% - 48px)); min-height: 90px; margin: auto; display: grid; grid-template-columns: .8fr 1.4fr 1fr; align-items: center; gap: 25px; }
 .footer-brand { display: block; max-width: 245px; line-height: 0; }
