@@ -55,6 +55,11 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "allowedHosts": [
+              "yzvcbumquy.c40.airoapp.ai"
+            ]
+          },
           "configurations": {
             "production": {
               "buildTarget": "destech_WEB:build:production"
