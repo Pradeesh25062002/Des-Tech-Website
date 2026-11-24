@@ -58,7 +58,9 @@
           "options": {
             "allowedHosts": [
               "yzvcbumquy.c40.airoapp.ai",
-              "yzvcbumquy.preview.c40.airoapp.ai"
+              "yzvcbumquy.preview.c40.airoapp.ai",
+              "destechacademy.com",
+              "www.destechacademy.com"
             ]
           },
           "configurations": {
